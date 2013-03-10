@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+  Copyright (C) 2011 Raffaela Ferrari open knowledge GmbH
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+ <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <head>
+    <title>Neuer Teilnehmer</title>
+  </head>
+  <h:body>
+    <f:metadata>
+        <f:viewParam name="title" value="Neuer Teilnehmer"/>
+    </f:metadata>
+    <ui:composition template="template.xhtml">
+      <ui:define name="content">
+        <h1 id="create">Teilnehmer anlegen</h1>
+        <h:form id="participantForm">
+
+            <h:outputLabel value="Vorname: " for="firstName" />
+            <h:inputText id="firstName" value="#{participantBuilder.firstName}" />		  
+            <h:outputLabel value="Nachname: " for="lastName"/>
+            <h:inputText id="lastName" value="#{participantBuilder.lastName}" />		  
+            <h:outputLabel value="Straße: " for="street"/>
+            <h:inputText id="street" value="#{participantBuilder.street}" />		  
+            <h:outputLabel value="Hausnummer: " for="streetNumber"/>
+            <h:inputText id="streetNumber" value="#{participantBuilder.streetNumber}" />		  
+            <h:outputLabel value="Postleitzahl: " for="zipCode"/>
+            <h:inputText id="zipCode" value="#{participantBuilder.zipCode}" />		  
+            <h:outputLabel value="Stadt: " for="city"/>
+            <h:inputText id="city" value="#{participantBuilder.city}" />		  
+		  <br />
+
+          <h:panelGroup layout="block" styleClass="buttons">
+            <h:commandButton id="create" value="Anlegen" actionListener="#{participantRepository.create(participantBuilder)}" 
+                 action="overview.xhtml?facesRedirect=true" />
+            <h:commandButton id="cancel" value="Abbrechen" action="overview.xhtml?facesRedirect=true" />
+          </h:panelGroup>
+              
+        </h:form>
+
+      </ui:define>
+    </ui:composition>
+  </h:body>
+</html>
