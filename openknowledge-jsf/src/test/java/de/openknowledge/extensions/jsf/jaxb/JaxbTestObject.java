@@ -23,7 +23,7 @@ public class JaxbTestObject {
 
   public JaxbTestObject(String attribute, List<Integer> values) {
     testAttribute = notNull(attribute);
-    testValues = Collections.unmodifiableList(new ArrayList<>(values));
+    testValues = Collections.unmodifiableList(new ArrayList<Integer>(values));
   }
 
   public String getTestAttribute() {
