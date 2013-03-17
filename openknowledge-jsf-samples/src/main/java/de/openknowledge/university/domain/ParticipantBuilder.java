@@ -16,53 +16,59 @@ public class ParticipantBuilder {
     return firstName;
   }
   
-  public void setFirstName(String firstName) {
+  public ParticipantBuilder withFirstName(String firstName) {
     this.firstName = firstName;
+    return this;
   }
   
   public String getLastName() {
     return lastName;
   }
   
-  public void setLastName(String lastName) {
+  public ParticipantBuilder andLastName(String lastName) {
     this.lastName = lastName;
+    return this;
   }
   
   public String getStreet() {
     return street;
   }
   
-  public void setStreet(String street) {
+  public ParticipantBuilder livingInStreet(String street) {
     this.street = street;
+    return this;
   }
   
   public String getStreetNumber() {
     return streetNumber;
   }
   
-  public void setStreetNumber(String streetNumber) {
+  public ParticipantBuilder withStreetNumber(String streetNumber) {
     this.streetNumber = streetNumber;
+    return this;
   }
   
   public String getZipCode() {
     return zipCode;
   }
   
-  public void setZipCode(String zipCode) {
+  public ParticipantBuilder withZipCode(String zipCode) {
     this.zipCode = zipCode;
+    return this;
   }
   
   public String getCity() {
     return city;
   }
   
-  public void setCity(String city) {
+  public ParticipantBuilder inCity(String city) {
     this.city = city;
+    return this;
   }
 
-  public Participant build() {
+  Participant build() {
     Participant participant = new Participant(new Name(firstName, lastName));
-    Address address = new Address(participant, new Street(street, streetNumber), new City(zipCode, city));
+    new Address(participant, new Street(street, streetNumber), new City(zipCode, city));
     return participant;
   }
 }
