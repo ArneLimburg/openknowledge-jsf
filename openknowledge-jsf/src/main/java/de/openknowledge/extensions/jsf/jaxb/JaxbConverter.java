@@ -9,6 +9,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
+import javax.faces.convert.FacesConverter;
 import javax.xml.bind.JAXBException;
 
 import com.sun.jersey.api.json.JSONConfiguration;
@@ -16,6 +17,7 @@ import com.sun.jersey.api.json.JSONJAXBContext;
 import com.sun.jersey.api.json.JSONMarshaller;
 import com.sun.jersey.api.json.JSONUnmarshaller;
 
+@FacesConverter("JaxbConverter")
 public class JaxbConverter implements Converter {
 
   private Class<?> type;
