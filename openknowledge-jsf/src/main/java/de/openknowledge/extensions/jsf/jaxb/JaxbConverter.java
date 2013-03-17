@@ -36,7 +36,7 @@ public class JaxbConverter implements Converter {
   public Object getAsObject(FacesContext context, UIComponent component, String value) throws ConverterException {
     try {
       JSONUnmarshaller unmarshaller = jaxbContext.createJSONUnmarshaller();
-      return unmarshaller.unmarshalJAXBElementFromJSON(new StringReader(value), type);
+      return unmarshaller.unmarshalFromJSON(new StringReader(value), type);
     } catch (JAXBException e) {
       throw new ConverterException(e);
     }

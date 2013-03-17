@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -14,7 +15,7 @@ public class JaxbTestObject {
 
   @XmlAttribute
   private String testAttribute;
-  @XmlAttribute
+  @XmlElement
   private List<Integer> testValues;
 
   protected JaxbTestObject() {

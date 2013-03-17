@@ -36,6 +36,6 @@ public class JaxbConverterTest {
 
   @Test(expected = ConverterException.class)
   public void getAsStringFails() throws ConverterException {
-    
+	  converter.getAsString(null, null, "{\"testAttribute\":\"testValue\",\"testValue\":1 2 3}");
   }
 }
