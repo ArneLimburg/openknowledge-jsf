@@ -17,7 +17,8 @@
  <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:ok="http://de.openknowledge/jsf">
   <head>
     <title>Neuer Teilnehmer</title>
   </head>
@@ -34,10 +35,11 @@
             <h:inputText id="firstName" value="#{participantBuilder.firstName}" />		  
             <h:outputLabel value="Nachname: " for="lastName"/>
             <h:inputText id="lastName" value="#{participantBuilder.lastName}" />		  
+            <ok:modelMethod value="#{participantBuilder.livingInStreet(participantBuilder.street.name, participantBuilder.street.number)}" />
             <h:outputLabel value="Straße: " for="street"/>
-            <h:inputText id="street" value="#{participantBuilder.street}" />		  
+            <h:inputText id="street" value="#{participantBuilder.street.name}" />		  
             <h:outputLabel value="Hausnummer: " for="streetNumber"/>
-            <h:inputText id="streetNumber" value="#{participantBuilder.streetNumber}" />		  
+            <h:inputText id="streetNumber" value="#{participantBuilder.street.number}" />		  
             <h:outputLabel value="Postleitzahl: " for="zipCode"/>
             <h:inputText id="zipCode" value="#{participantBuilder.zipCode}" />		  
             <h:outputLabel value="Stadt: " for="city"/>

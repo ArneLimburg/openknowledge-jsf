@@ -1,5 +1,6 @@
 package de.openknowledge.university.domain;
 
+import static org.apache.commons.lang3.Validate.notBlank;
 import static org.apache.commons.lang3.Validate.notNull;
 
 import javax.persistence.Embeddable;
@@ -15,16 +16,24 @@ public class Street {
   }
   
   public Street(String streetName, String streetNumber) {
-    name = notNull(streetName, "street name may not be null");
-    number = notNull(streetNumber, "street number may not be null");
+    name = notBlank(streetName, "street name may not be null");
+    number = notBlank(streetNumber, "street number may not be null");
   }
 
   public String getName() {
     return name;
   }
   
+  public Street newName(String name) {
+    return new Street(name, number);
+  }
+
   public String getNumber() {
     return number;
+  }
+  
+  public Street newNumber(String number) {
+    return new Street(name, number);
   }
 
   @Override

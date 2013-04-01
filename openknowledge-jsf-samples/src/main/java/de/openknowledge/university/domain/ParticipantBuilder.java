@@ -1,13 +1,15 @@
 package de.openknowledge.university.domain;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 @Named
+@RequestScoped
 public class ParticipantBuilder {
 
   private String firstName;
   private String lastName;
-  private String street;
+  private String streetName;
   private String streetNumber;
   private String zipCode;
   private String city;
@@ -30,24 +32,20 @@ public class ParticipantBuilder {
     return this;
   }
   
-  public String getStreet() {
-    return street;
+  public ParticipantBuilder livingInStreet(String name, String number) {
+    return livingInStreet(new StreetBuilder().withName(name).andNumber(number));
   }
   
-  public ParticipantBuilder livingInStreet(String street) {
-    this.street = street;
+  public StreetBuilder getStreet() {
+    return new StreetBuilder();
+  }
+  
+  private ParticipantBuilder livingInStreet(StreetBuilder streetBuilder) {
+    this.streetName = streetBuilder.getName();
+    this.streetNumber = streetBuilder.getNumber();
     return this;
   }
-  
-  public String getStreetNumber() {
-    return streetNumber;
-  }
-  
-  public ParticipantBuilder withStreetNumber(String streetNumber) {
-    this.streetNumber = streetNumber;
-    return this;
-  }
-  
+
   public String getZipCode() {
     return zipCode;
   }
@@ -68,7 +66,32 @@ public class ParticipantBuilder {
 
   Participant build() {
     Participant participant = new Participant(new Name(firstName, lastName));
-    new Address(participant, new Street(street, streetNumber), new City(zipCode, city));
+    new Address(participant, new Street(streetName, streetNumber), new City(zipCode, city));
     return participant;
+  }
+
+  public class StreetBuilder {
+    
+    public String getName() {
+      return streetName;
+    }
+
+    public String getNumber() {
+      return streetNumber;
+    }
+
+    public StreetBuilder withName(String name) {
+      streetName = name;
+      return this;
+    }
+
+    public StreetBuilder andNumber(String number) {
+      streetNumber = number;
+      return this;
+    }
+
+    Street build() {
+      return new Street(streetName, streetNumber);
+    }
   }
 }
